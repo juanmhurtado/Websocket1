@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente WebSocket</title>
+</head>
+<body>
+    <h1>Cliente WebSocket</h1>
+    
+    SkyNova
+    <button onclick="sendMessage()">Abrir anclaje</button>
+
+    <script>
+    // Create WebSocket connection.
+    const socket = new WebSocket('ws:192.168.145.54:3000');
+    //const socket = new WebSocket('ws://192.168.173.54:3000');
+
+    // Connection opened
+    socket.addEventListener('open', function (event) {
+        console.log('Connected to WS Server')
+    });
+
+    // Listen for messages
+    socket.addEventListener('message', function (event) {
+        console.log('Message from server ', event.data);
+    });
+
+    const sendMessage = () => {
+        socket.send('1');
+    }
+    </script>
+</body>
+</html>
